@@ -26,11 +26,22 @@ export class Dinoipsum {
     try {
       const response = await fetch(`http://dinoipsum.herokuapp.com/api/?format=json&words=1&paragraphs=1`);
       let jsonifiedResponse = await response.json();
-      // console.log(response);
-      // console.log(jsonifiedResponse);
       return jsonifiedResponse;
     } catch(error) {
       console.error("There was an error handling your request: " + error.message);
     }
   }
+
+  async getDinoImage() {
+    try {
+      const response = await fetch(`http://api.giphy.com/v1/gifs/IgFhbm6Nc1wGapSInG?api_key=V4ljfgrLIuS9B8JF93F0AtQoTnSeQvkx&limit=5v`);
+      console.log(response)
+      let jsonifiedResponse = await response.json();
+      console.log(jsonifiedResponse)
+      let gif = jsonifiedResponse.data.images.downsized_large.url
+      return gif
+      } catch(error) {
+        console.error("There was an error handling your request: " + error.message);
+      }
+    }
 }

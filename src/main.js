@@ -10,15 +10,23 @@ $(document).ready(function() {
     // console.log("hello");
 
     (async () => {
-      const response = await dinoipsum.getDinoName();  
-      getElements(response);
+      const response = await dinoipsum.getDinoName();
+      const image = await dinoipsum.getDinoImage();
+      console.log("RESPONSE: ", response);
+      console.log("IMAGE: ", image);  
+      getElements(response, image);
+      // getElements(image);
     })();
-    function getElements(response) {
-      let letters = dinoipsum.getDinoLetterArray(response)
-      let length = dinoipsum.getDinoLength(response);
+    function getElements(response, image) {
+      // let letters = dinoipsum.getDinoLetterArray(response)
+      // let length = dinoipsum.getDinoLength(response);
+      console.log("response " + response)
       $('#showDino').text(`${response}`);
-      $('#dinoLength').text(`${length}`);
-      $('#dinoLetters').text(`${letters}`);
+      console.log(`image src ` + image)
+      $('#showDinoimage').append(`<img src=${image}>`)
+
+      // $('#dinoLength').text(`${length}`);
+      // $('#dinoLetters').text(`${letters}`);
     }   
 });
 });
